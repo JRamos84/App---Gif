@@ -1,19 +1,31 @@
 import { useState } from "react";
-import ListOfGifs from "./componentes/ListOfGifs";
 import "./App.css";
-
 import { Route, Link } from "wouter";
-function App() {
+import Home from './pages/Home'
+import SearchResults from './pages/SearchResults'
+import Detail from './pages/Detail'
+
+
+const App = ()=> {
   const [keyword, setKeyword] = useState("panda");
   return (
     <div className="App">
       <section className="App-content">
-        <button onClick={() => setKeyword("mapache")}>cambiar todo</button>
-      <h1>App</h1>
-      <Link to="/gif/panda">Panda</Link>
-      <Link to="/gif/css">css</Link>
-      <Link to="/gif/argentina">Argentina</Link>
-        <Route path="/gif/:keyword" component={ListOfGifs} />
+        <Link to="/">
+          <img src="/logos.svg" alt="logos" className="App-logo" />
+        </Link>
+        <Route
+          component={Home}
+          path = "/"
+        />
+        <Route
+        component={SearchResults}
+        path = "/search/:keyword"
+        />
+        <Route
+          component={Detail}
+          path = "/gif/:id"
+        />
       </section>
     </div>
   );
