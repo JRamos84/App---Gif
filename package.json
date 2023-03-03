@@ -20,8 +20,8 @@
   },
   "eslintConfig": {
     "extends": [
-    
-      "./node_modules/standard/eslintrc.json"
+      "react-app",
+      "react-app/jest"
     ]
   },
   "browserslist": {
@@ -39,3 +39,4 @@
   "devDependencies": {
     "standard": "^17.0.0"
   }
+}
