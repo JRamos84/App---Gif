@@ -9,9 +9,12 @@
     margin: 16px;
     text-decoration: none;
 }
-.Gif h4{margin: 0;}
+.Gif h4{
+    font-size: 16px;
+    margin: 0;}
 
 
 .Gif img{
     object-fit: contain;
+    width: 100%;
 }
