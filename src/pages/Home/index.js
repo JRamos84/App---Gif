@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Link, useLocation } from "wouter"
+import {  useLocation } from "wouter"
 import './styles.css'
 import { useGifs } from '../../hooks/useGifs'
 import ListOfGifs from '../../componentes/ListOfGifs'
+import TrendingSearches from '../../componentes/TrendingSearches'
 
-const POPULAR_GIFS = ["Matrix", "Chile", "Colombia", "Ecuador"]
 
 
 export default function Home() {
@@ -31,16 +31,11 @@ export default function Home() {
             <ListOfGifs gifs = {gifs}/>
 
             <h3>Los gifs más populares</h3>
-            <ul>
-                {POPULAR_GIFS.map((popularGif) => (
-                    <li key={popularGif}>
-                        <Link to={`/search/${popularGif}`}>
-                           <span> Gifs de {popularGif}</span>
-                        </Link>
 
-                    </li>
-                ))}
-            </ul>
+        <TrendingSearches/>
+
+
+           
         </>
     )
 }
