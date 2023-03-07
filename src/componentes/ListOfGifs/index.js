@@ -6,8 +6,8 @@ export default function ListOfGifs({gifs}) {
   <div className='ListOfGifs'>
       {
   gifs.map((gif) => (
+    <div key={gif.id}> <Gif {...gif} /></div>
     
-    <Gif {...gif} />
   ))}
   </div>)
 }
