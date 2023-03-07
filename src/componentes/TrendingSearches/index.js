@@ -15,13 +15,11 @@ function TrendingSearches() {
 }
 
 
-
-
 export default function LazyTrending() {
-    const {isNearScreen, fromRef}= useNearScrenn({distance:'150px'})
+    const { isNearScreen, fromRef } = useNearScrenn({ distance: '150px' })
 
 
-    
+
 
     return <div ref={fromRef}>
         {isNearScreen ? <TrendingSearches /> : null}
