@@ -1,15 +1,18 @@
 import { useState, useEffect, useContext } from 'react'
 import getGifts from '../services/getGifs'
 import GifsContext from '../context/GifContext'
+const INITIAL_PAGE = 0
 
 export function useGifs({ keyword } = { keyword: null }) {
     const [loandig, setLoanding] = useState(false)
-    const {gifs, setGifs} = useContext(GifsContext)
-    
+    const [loandigNextPage, SetLoandingNextPage] = useState(false)
+    const [page, setPage] = useState(INITIAL_PAGE)
+    const { gifs, setGifs } = useContext(GifsContext)
+    const keywordToUse = keyword || localStorage.getItem('lastKeyword') || 'random'
+
 
     useEffect(function () {
         setLoanding(true)
-        const keywordToUse = keyword || localStorage.getItem('lastKeyword')
 
         getGifts({ keywordToUse })
             .then(gifs => {
@@ -18,7 +21,17 @@ export function useGifs({ keyword } = { keyword: null }) {
                 localStorage.setItem('lastKeyword', keyword)
 
             })
-    }, [keyword])
+    }, [keyword,keywordToUse, setGifs])
 
-    return { loandig, gifs }
+    useEffect(function () {
+        if (page === INITIAL_PAGE) return
+        console.log(page)
+        SetLoandingNextPage(true)
+        getGifts({keyword: keywordToUse, page})
+         .then(nextGifs=>{
+            setGifs(prevGifs => prevGifs.concat(nextGifs))
+            SetLoandingNextPage(false)
+         })
+    }, [page , keywordToUse, setGifs])
+    return { loandig, loandigNextPage, gifs, setPage }
 }
