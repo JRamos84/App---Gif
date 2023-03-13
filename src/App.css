@@ -13,12 +13,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 16px;
+
 }
 
 button{
   font-size: 48px;
-}
-a {
-  color: white;
-  font-size: 100px;
 }

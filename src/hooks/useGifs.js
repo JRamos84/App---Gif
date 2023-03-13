@@ -25,7 +25,7 @@ export function useGifs({ keyword } = { keyword: null }) {
 
     useEffect(function () {
         if (page === INITIAL_PAGE) return
-        console.log(page)
+     //   console.log(page)
         SetLoandingNextPage(true)
         getGifts({keyword: keywordToUse, page})
          .then(nextGifs=>{
